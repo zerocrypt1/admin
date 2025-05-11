@@ -1,0 +1,214 @@
+/* ViewApplicant.css */
+
+.viewapplicant-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.viewapplicant-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.viewapplicant-back-button {
+  background-color: transparent;
+  border: none;
+  color: #2c5282;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  position: absolute;
+  left: 0;
+}
+
+.viewapplicant-back-button:hover {
+  color: #1a365d;
+  text-decoration: underline;
+}
+
+.viewapplicant-title {
+  width: 100%;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  color: #2d3748;
+}
+
+.viewapplicant-applicant-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.viewapplicant-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+.viewapplicant-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.viewapplicant-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.viewapplicant-field-label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #4a5568;
+}
+
+.viewapplicant-field-value {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #2d3748;
+  word-break: break-word;
+}
+
+.viewapplicant-empty-value {
+  color: #a0aec0;
+  font-style: italic;
+}
+
+.viewapplicant-object-value {
+  background-color: #f7fafc;
+  padding: 1rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+  overflow-x: auto;
+  margin: 0;
+  border: 1px solid #edf2f7;
+}
+
+/* Loading state */
+.viewapplicant-loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.viewapplicant-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.viewapplicant-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #3182ce;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error state */
+.viewapplicant-error-container,
+.viewapplicant-empty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.viewapplicant-error,
+.viewapplicant-empty {
+  text-align: center;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  max-width: 500px;
+}
+
+.viewapplicant-error h3,
+.viewapplicant-empty h3 {
+  color: #2d3748;
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.viewapplicant-button {
+  padding: 0.5rem 1rem;
+  background-color: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin: 0.5rem;
+}
+
+.viewapplicant-button:hover {
+  background-color: #2c5282;
+}
+
+.viewapplicant-button.secondary {
+  background-color: #e2e8f0;
+  color: #4a5568;
+}
+
+.viewapplicant-button.secondary:hover {
+  background-color: #cbd5e0;
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+  .viewapplicant-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .viewapplicant-container {
+    padding: 1rem;
+  }
+  
+  .viewapplicant-card {
+    padding: 1.5rem;
+  }
+  
+  .viewapplicant-title {
+    font-size: 1.5rem;
+  }
+  
+  .viewapplicant-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .viewapplicant-back-button {
+    position: static;
+  }
+}
