@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
         
         try {
           // Verify token validity
-          const res = await axios.get('http://localhost:5050/api/auth/user');
+          const res = await axios.get('https://admin-f12a.onrender.com/api/auth/user');
           
           if (res.data.success) {
             setUser(res.data.user);
