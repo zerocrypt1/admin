@@ -14,10 +14,11 @@ const app = express();
 // Middleware setup
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3000', // Your frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: ['http://localhost:3000', 'https://admin-hp6u.vercel.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
 }));
+
 
 // MongoDB Connection
 const mongoURI = 'mongodb+srv://shivansh:shivansh@cluster0.ge6innb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
