@@ -18,7 +18,7 @@ const Login = () => {
     
     try {
       // Replace with your backend URL
-      const response = await axios.post('http://localhost:5050/api/auth/login', {
+      const response = await axios.post('https://admin-f12a.onrender.com/api/auth/login', {
         username,
         password
       });
