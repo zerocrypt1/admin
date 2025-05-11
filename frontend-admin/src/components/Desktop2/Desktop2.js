@@ -32,7 +32,7 @@ function Desktop2() {
   const fetchForms = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('http://localhost:5050/forms');
+      const response = await axios.get('https://admin-f12a.onrender.com/forms');
       if (response.data.success) {
         setForms(response.data.data);
         setFilteredForms(response.data.data);
@@ -104,7 +104,7 @@ function Desktop2() {
     if (!confirmed) return;
 
     try {
-      await axios.delete(`http://localhost:5050/forms/${formId}`);
+      await axios.delete(`https://admin-f12a.onrender.com/forms/${formId}`);
       toast.success('Form deleted successfully!');
       fetchForms();
     } catch (error) {
