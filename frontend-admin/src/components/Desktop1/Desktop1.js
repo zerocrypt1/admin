@@ -316,24 +316,35 @@ function Desktop1() {
     setLocationResults([]);
     
     // Use the Google Maps Geocoding API with more accurate parameters
-    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(formData.landmarks)}&sensor=true&key=${"AIzaSyAqYM_LPakaBotYeIb7m_spZf3m0ZQU2KI"}`)
-      .then((res) => {
-        if (res.data.results && res.data.results.length > 0) {
-          // Sort results by relevance (Google already does this, but we can enhance)
-          const sortedResults = res.data.results;
-          setLocationResults(sortedResults);
-          toast.success(`Found ${sortedResults.length} locations!`);
-        } else {
-          toast.error("No locations found. Please try a different landmark.");
-        }
-        setSearchingLocations(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Error finding locations.");
-        setSearchingLocations(false);
-      });
-  };
+    axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(formData.landmarks)}&key=440c46f29d824bc087c36dc044d089d3&pretty=1&no_annotations=1`)
+     .then((res) => {
+      if (res.data.results && res.data.results.length > 0) {
+        // Format the results to match the structure expected by the rest of the code
+        const formattedResults = res.data.results.map(result => ({
+          formatted_address: result.formatted,
+          geometry: {
+            location: {
+              lat: result.geometry.lat,
+              lng: result.geometry.lng
+            }
+          },
+          types: result.components.category ? [result.components.category] : [],
+          components: result.components
+        }));
+        
+        setLocationResults(formattedResults);
+        toast.success(`Found ${formattedResults.length} locations!`);
+      } else {
+        toast.error("No locations found. Please try a different landmark.");
+      }
+      setSearchingLocations(false);
+    })
+    .catch((err) => {
+      console.log(err);
+      toast.error("Error finding locations.");
+      setSearchingLocations(false);
+    });
+};
   
   const selectLocation = (location) => {
     setFormData({
@@ -498,7 +509,7 @@ function Desktop1() {
     
     setLoading(true);
     try {
-      const response = await fetch('https://admin-f12a.onrender.com/forms', {
+      const response = await fetch('http://localhost:5050/forms', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
