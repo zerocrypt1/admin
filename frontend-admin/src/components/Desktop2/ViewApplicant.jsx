@@ -14,7 +14,7 @@ function ViewApplicant() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`http://localhost:5050/forms/${id}`);
+      const response = await axios.get(`https://admin-f12a.onrender.com/forms/${id}`);
       if (response.data.success) {
         setApplicant(response.data.data);
       } else {
